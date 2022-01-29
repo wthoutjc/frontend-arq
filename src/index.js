@@ -8,3 +8,13 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 )
+
+/**
+ * Estructura de los emits,
+ * Sujeto a cambios.
+ * {
+ *  payload,
+ *  message,
+ *  ...
+ * }
+ */
