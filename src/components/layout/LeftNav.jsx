@@ -11,28 +11,23 @@ import * as IoIcons from 'react-icons/io'
 import useUser from '../../hooks/useUser'
 
 //Lectura de token
-import jwt from 'jwt-decode'
+import decode from 'jwt-decode'
 
 import { RoleContexts } from '../../context/roleContext'
 
 const LeftNav = ({ show, setShow, setRender }) => {
-  const infoUser = useRef(jwt(localStorage.getItem('jwt')))
-  const { isLogged, logOut } = useUser()
+  const infoUser = useRef(decode(localStorage.getItem('jwt')))
+  const { jwt, logout } = useUser()
   const history = useHistory()
 
   const { leftNavData } = useContext(RoleContexts)
 
   useEffect(() => {
-    if (
-      isLogged === false ||
-      isLogged === null ||
-      isLogged === 'Falló la comunicación con el servidor'
-    ) {
+    if (!jwt) {
       history.push('/')
-    } else if (isLogged === 'Server not response') {
-      history.push('/error')
     }
-  }, [history, isLogged, logOut])
+  }, [history, jwt, logout])
+
   return (
     <>
       <div className={show ? 'left-nav active' : 'left-nav'}>
@@ -57,7 +52,7 @@ const LeftNav = ({ show, setShow, setRender }) => {
             className="left-footer-options"
             onClick={(e) => {
               e.preventDefault()
-              logOut({ setRender })
+              logout({ setRender })
             }}
           >
             <FiIcons.FiLogOut />

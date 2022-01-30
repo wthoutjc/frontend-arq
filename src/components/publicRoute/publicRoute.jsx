@@ -9,9 +9,6 @@ const PublicRoute = ({ render: Component, ...rest }) => {
   let renderStatus = false
   let renderErrorStatus = false
 
-  console.log(jwt)
-  console.log(!jwt)
-
   if (!jwt) {
     renderStatus = false
     renderErrorStatus = true

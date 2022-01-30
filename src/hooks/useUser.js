@@ -4,6 +4,7 @@ import { useState, useCallback, useContext, useRef } from 'react'
 
 //Services
 import loginService from '../services/loginService'
+import logoutService from '../services/logoutService'
 
 //URL States
 import urlStates from './urlStates'
@@ -11,10 +12,6 @@ import urlStates from './urlStates'
 const useUser = () => {
   // Administración de JWT
   const { jwt, setJwt } = useContext(sessionContext)
-  const [infoUser, setInfoUser] = useState({
-    logged: null,
-    message: null,
-  })
 
   // Estado global de URL de backend: prod or dev stage
   const urlGeneral = useRef(urlStates)
@@ -25,7 +22,6 @@ const useUser = () => {
   const login = useCallback(
     async ({ username, password, setLoading }) => {
       const url = `${urlGeneral.current}/log-in`
-      console.log('LOGIN')
       try {
         setLoading(true)
         const data = await loginService({ username, password, url })
@@ -48,10 +44,32 @@ const useUser = () => {
     [setJwt]
   )
 
+  const logout = useCallback(
+    async ({ setRender, setRenderError }) => {
+      const url = `${urlGeneral.current}/revokeToken`
+      try {
+        setRender(true)
+        const data = await logoutService(localStorage.getItem('jwt'), url)
+        if (data) {
+          setRender(false)
+          localStorage.removeItem('jwt')
+          setJwt(null)
+        } else {
+          setRenderError(true)
+        }
+      } catch (error) {
+        console.error(error)
+        setJwt(null)
+        localStorage.removeItem('jwt')
+      }
+    },
+    [setJwt]
+  )
+
   return {
     jwt,
-    infoUser,
     login,
+    logout,
   }
 }
 

@@ -21,7 +21,7 @@ const Login = () => {
   const history = useHistory()
 
   //Proceso LogIn
-  const { jwt, infoUser, login } = useUser()
+  const { jwt, login } = useUser()
 
   // LoginInfo
   const [infoLogin, setInfoLogin] = useState({
