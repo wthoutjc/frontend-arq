@@ -13,6 +13,16 @@ const Test = () => {
     )
   }
 
+  if (socket) {
+    socket.on('new_number', (res) => {
+      console.log(res)
+    })
+
+    socket.on('message', (res) => {
+      console.log(res)
+    })
+  }
+
   return <button onClick={handleSendMessage}>INTERACTION</button>
 }
 

@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/*font-family: 'Montserrat', sans-serif;*/
+* {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+:root {
+  --color-grisPrimario: #1e272e;
+  --color-grisSecundario: #222f3e;
+  --color-whitePrimario: #c7ecee;
+  --color-azulClaro: #1e90ff;
+  --color-rojoPrimario: #ff5e57;
+  --color-verdePrimario: #05c46b;
+}
+#root {
+  position: absolute !important;
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Montserrat', sans-serif;
+}
+.start-page {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+}
+.start-page .start-left,
+.start-page .start-right {
+  width: 50%;
+  height: 100%;
+}
+.start-page .start-left > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.start-page .start-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-grisPrimario);
+  padding: 1em;
+  box-sizing: border-box;
+}
+.login {
+  color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 80%;
+  height: 85%;
+  background-color: var(--color-grisSecundario);
+  padding: 1.3em;
+  border-radius: 1em;
+}
+.login .title,
+.login .subtitle {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+}
+.login .title > h1,
+.login .subtitle > h2 {
+  font-weight: 900;
+}
+.login .title > h1 {
+  border-bottom: 3px solid var(--color-azulClaro);
+  border-end-end-radius: 0.3em;
+  border-end-start-radius: 0.3em;
+  padding: 0.4em;
+}
+.login form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 0 1em 0 1em;
+}
+.login form > div {
+  display: flex;
+  box-sizing: border-box;
+  padding: 1em;
+}
+.login form div > input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.7em;
+  outline: none;
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  color: rgb(0, 0, 0);
+  background-color: var(--color-whitePrimario);
+  border-bottom: 3px solid var(--color-azulClaro);
+  border-end-start-radius: 0.6em;
+}
+.login form div > input::placeholder {
+  color: rgb(90, 90, 90);
+}
+.login form div > .icon {
+  border: 1px solid var(--color-azulClaro);
+  border-bottom: 3px solid var(--color-azulClaro);
+  border-end-end-radius: 0.6em;
+  box-sizing: border-box;
+  padding: 0.6em;
+  background-color: var(--color-grisPrimario);
+}
+.login form div > .show-password {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-whitePrimario);
+  border-bottom: 3px solid var(--color-azulClaro);
+  cursor: pointer;
+  color: var(--color-grisPrimario);
+  box-sizing: border-box;
+  padding-right: 0.2em;
+}
+.login form .status {
+  padding: 0 1em;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+.login form .button {
+  display: flex;
+  justify-content: center;
+}
+.login form .button > button {
+  cursor: pointer;
+  font-size: 90%;
+  font-weight: 400;
+  width: 70%;
+  box-sizing: border-box;
+  padding: 0.7em;
+  border: none;
+  background-color: var(--color-azulClaro);
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  border-radius: 0.8em;
+  box-shadow: 1px 1px 3px blanchedalmond;
+}
+.login form .button > button:hover {
+  background-color: var(--color-grisPrimario);
+  box-shadow: 1px 1px 4px 2px rgba(143, 143, 143, 0.911);
+  transition: all 0.2s;
+}
+.login .forgot-password a {
+  color: white;
+  text-decoration: none;
+}
+.login .forgot-password a:hover {
+  text-decoration: underline ivory;
+}
+.ok {
+  background-color: var(--color-verdePrimario) !important;
+  padding: .4em;
+}
+.error {
+  background-color: var(--color-rojoPrimario) !important;
+  padding: .4em;
+}
+@media all and (max-width: 649px) {
+  .start-page .start-left {
+    display: none;
+  }
+  .start-page .start-right {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+  }
+  .login {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+}
