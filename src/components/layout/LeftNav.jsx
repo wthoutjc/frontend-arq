@@ -16,7 +16,7 @@ import decode from 'jwt-decode'
 import { RoleContexts } from '../../context/roleContext'
 
 const LeftNav = ({ show, setShow, setRender }) => {
-  const infoUser = useRef(decode(localStorage.getItem('jwt')))
+  const infoUser = useRef(decode(localStorage.getItem('jwt')) || null)
   const { jwt, logout } = useUser()
   const history = useHistory()
 
@@ -26,7 +26,7 @@ const LeftNav = ({ show, setShow, setRender }) => {
     if (!jwt) {
       history.push('/')
     }
-  }, [history, jwt, logout])
+  }, [history, jwt])
 
   return (
     <>
@@ -57,7 +57,6 @@ const LeftNav = ({ show, setShow, setRender }) => {
           >
             <FiIcons.FiLogOut />
             <p>Cerrar sesión</p>
-            {/* <p>Cerrar sesión</p> */}
           </Link>
         </div>
         <div className="left-nav-content">

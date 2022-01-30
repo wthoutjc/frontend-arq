@@ -3,6 +3,7 @@ import { useState } from 'react'
 // Components
 import Navbar from '../../layout/Navbar'
 import Test from '../../Tests/test'
+import LoadingServer from '../../loaders/loadingServer'
 
 // Socket: Context
 import { ContextSocketProvider } from '../../../context/contextSocketProvider'
@@ -12,6 +13,7 @@ const Admin = () => {
   return (
     <>
       <ContextSocketProvider>
+        <LoadingServer render={render} />
         <div className="admin">
           <Navbar setRender={setRender} />
           <div className="content-app">

@@ -12,6 +12,10 @@ import urlStates from './urlStates'
 const useUser = () => {
   // Administración de JWT
   const { jwt, setJwt } = useContext(sessionContext)
+  const [loginStatus, setLoginStatus] = useState({
+    itsLogged: null,
+    message: null,
+  })
 
   // Estado global de URL de backend: prod or dev stage
   const urlGeneral = useRef(urlStates)
@@ -28,12 +32,17 @@ const useUser = () => {
         if (data) {
           setLoading(false)
           if (data[1]) {
-            setJwt(await data[0])
+            setJwt(data[0])
             localStorage.setItem('jwt', data[0])
           } else {
             setJwt(null)
             localStorage.removeItem('jwt')
           }
+          setLoginStatus({
+            itsLogged: data[1],
+            message: data[0],
+          })
+          return
         }
       } catch (error) {
         console.error(error)
@@ -45,7 +54,7 @@ const useUser = () => {
   )
 
   const logout = useCallback(
-    async ({ setRender, setRenderError }) => {
+    async ({ setRender }) => {
       const url = `${urlGeneral.current}/revokeToken`
       try {
         setRender(true)
@@ -54,8 +63,6 @@ const useUser = () => {
           setRender(false)
           localStorage.removeItem('jwt')
           setJwt(null)
-        } else {
-          setRenderError(true)
         }
       } catch (error) {
         console.error(error)
@@ -68,6 +75,7 @@ const useUser = () => {
 
   return {
     jwt,
+    loginStatus,
     login,
     logout,
   }

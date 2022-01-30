@@ -1,5 +1,5 @@
 import '../../styles/start/start.css'
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 
 //Components
@@ -21,7 +21,7 @@ const Login = () => {
   const history = useHistory()
 
   //Proceso LogIn
-  const { jwt, login } = useUser()
+  const { jwt, loginStatus, login } = useUser()
 
   // LoginInfo
   const [infoLogin, setInfoLogin] = useState({
@@ -68,6 +68,16 @@ const Login = () => {
       history.push(`/${categoria}`)
     }
   }, [jwt, history])
+
+  useEffect(() => {
+    if (loginStatus.itsLogged === false) {
+      setStatus({
+        ok: loginStatus.itsLogged,
+        message: loginStatus.message,
+        render: true,
+      })
+    }
+  }, [loginStatus])
 
   return (
     <div className="login">
@@ -134,7 +144,9 @@ const Login = () => {
           </span>
         )}
         <div className="button">
-          <button type="submit">CONECTAR</button>
+          <button type="submit">
+            {loading ? <LoaderComponent /> : 'CONECTAR'}
+          </button>
         </div>
       </form>
       <div className="forgot-password">

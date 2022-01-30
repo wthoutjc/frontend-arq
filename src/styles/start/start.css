@@ -129,6 +129,7 @@
 .login form .button {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 .login form .button > button {
   cursor: pointer;
