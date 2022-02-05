@@ -18,6 +18,10 @@ const Test = () => {
       console.log(res)
     })
 
+    // socket.onopen = (e) => {
+    //   console.log(`Connected!`)
+    // }
+
     socket.on('message', (res) => {
       console.log(res)
     })

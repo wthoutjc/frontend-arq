@@ -11,8 +11,24 @@ export function ContextSocketProvider({ children }) {
   const [socket, setSocket] = useState(null)
 
   useEffect(() => {
-    const SOCKET_URI = urlGeneral.current // process.env.REACT_APP_SOCKET
-    const socketClient = client(SOCKET_URI)
+    const socketClient = client(
+      `wss://4dytxurnu4.execute-api.sa-east-1.amazonaws.com/dev`,
+      // {
+      //   path: '/dev/socket.io/',
+      //   withCredentials: true,
+      //   extraHeaders: {
+      //     'Content-Type': 'application/json',
+      //     'Access-Control-Allow-Credentials': true,
+      //   },
+      //   // ContentType: 'application/json',
+      //   // 'Access-Control-Allow-Credentials': true,
+      // }
+      {
+        path: '/dev/socket.io/',
+        transports: ['websocket'], // forces websockets only
+      }
+    ) //client(`${urlGeneral.current}`)
+    console.log(socketClient)
     setSocket(socketClient)
   }, [])
   return (
