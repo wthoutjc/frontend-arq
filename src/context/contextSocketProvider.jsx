@@ -12,21 +12,15 @@ export function ContextSocketProvider({ children }) {
 
   useEffect(() => {
     const socketClient = client(
-      `wss://4dytxurnu4.execute-api.sa-east-1.amazonaws.com/dev`,
+      `http://backendarqsocket-env.eba-kzbdwzv7.sa-east-1.elasticbeanstalk.com/`
       // {
-      //   path: '/dev/socket.io/',
+      //   transports: ['websocket'], // forces websockets only
       //   withCredentials: true,
       //   extraHeaders: {
       //     'Content-Type': 'application/json',
       //     'Access-Control-Allow-Credentials': true,
       //   },
-      //   // ContentType: 'application/json',
-      //   // 'Access-Control-Allow-Credentials': true,
       // }
-      {
-        path: '/dev/socket.io/',
-        transports: ['websocket'], // forces websockets only
-      }
     ) //client(`${urlGeneral.current}`)
     console.log(socketClient)
     setSocket(socketClient)

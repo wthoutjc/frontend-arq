@@ -1,3 +1,4 @@
-const urlStates = 'https://xx2atymlv3.execute-api.sa-east-1.amazonaws.com/dev/'
+const urlStates =
+  'http://backendarqsocket-env.eba-kzbdwzv7.sa-east-1.elasticbeanstalk.com/'
 // 'http://127.0.0.1:443'
 export default urlStates
