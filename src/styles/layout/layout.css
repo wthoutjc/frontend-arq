@@ -34,7 +34,6 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  flex: 1 0 90%;
   height: 60px;
   padding-left: 1em;
   box-sizing: border-box;

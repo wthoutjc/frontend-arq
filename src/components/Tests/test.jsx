@@ -1,6 +1,7 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import SocketContext from '../../context/contextSocketProvider'
 const Test = () => {
+  const [globalState, setGlobalState] = useState(null)
   const { socket } = useContext(SocketContext)
 
   const handleSendMessage = () => {
@@ -23,11 +24,19 @@ const Test = () => {
     // }
 
     socket.on('message', (res) => {
+      const { message } = res || null
       console.log(res)
+      console.log(message)
+      setGlobalState(message)
     })
   }
 
-  return <button onClick={handleSendMessage}>INTERACTION</button>
+  return (
+    <>
+      <button onClick={handleSendMessage}>INTERACTION</button>
+      <h3>State: {globalState} </h3>
+    </>
+  )
 }
 
 export default Test

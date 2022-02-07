@@ -1,0 +1,93 @@
+.dispositivos {
+  padding: 0.4em;
+  box-sizing: border-box;
+  max-width: 360px;
+  width: 100%;
+  background-color: var(--color-grisSecundario);
+  color: rgb(184, 184, 184);
+  border-radius: 0.3em;
+  animation: boxGradient 4s infinite linear;
+}
+.card {
+  width: 100%;
+  display: flex;
+}
+.card .img-device {
+  margin: 0.4em;
+  width: 100px;
+  border: 1px solid white;
+  border-radius: 50%;
+  overflow: hidden;
+  animation: activeDevice 2s infinite linear;
+}
+.card .img-device > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.status-device {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  margin-left: 0.4em;
+  font-size: 90%;
+  color: whitesmoke;
+}
+.status-device h4 {
+  display: flex;
+}
+.status-device h4 > p {
+  margin-left: 0.3em;
+  color: whitesmoke;
+}
+.status-device h4 > .status-active {
+  color: rgba(0, 211, 81, 0.973);
+}
+.device-options {
+  margin-top: 0.4em;
+  display: flex;
+  flex-direction: column;
+}
+
+.device-options > button {
+  font-family: 'Montserrat', sans-serif;
+  color: whitesmoke;
+  border: none;
+  border-radius: 0.4em;
+  margin-bottom: 0.3em;
+  padding: 0.4em;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.device-options > button:first-child {
+  background-color: var(--color-azulClaro);
+}
+.device-options > button:last-child {
+  background-color: var(--color-verdePrimario);
+}
+.add-device {
+  font-family: 'Montserrat', sans-serif;
+  color: whitesmoke;
+  border: none;
+  border-radius: 0.4em;
+  margin-top: 0.6em;
+  padding: 0.4em;
+  box-sizing: border-box;
+  cursor: pointer;
+  width: 350px;
+  background-color: var(--color-grisSecundario);
+  border-bottom: 1px solid white;
+}
+@keyframes activeDevice {
+  0% {
+    box-shadow: 1px 1px 10px 4px rgba(0, 182, 70, 0.897);
+  }
+  50% {
+    box-shadow: 1px 1px 10px 4px rgba(0, 109, 42, 0.897);
+  }
+  100% {
+    box-shadow: 1px 1px 10px 4px rgba(0, 182, 70, 0.479);
+  }
+}
