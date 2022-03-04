@@ -12,7 +12,7 @@ export function ContextSocketProvider({ children }) {
 
   useEffect(() => {
     const socketClient = client(
-      `http://backendarqsocket-env.eba-kzbdwzv7.sa-east-1.elasticbeanstalk.com/`
+      `${urlGeneral.current}`
       // {
       //   transports: ['websocket'], // forces websockets only
       //   withCredentials: true,

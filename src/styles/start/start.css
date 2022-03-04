@@ -9,9 +9,12 @@
   --color-grisPrimario: #1e272e;
   --color-grisSecundario: #222f3e;
   --color-whitePrimario: #c7ecee;
+  --color-whiteSecundario:#7f8c8d;
   --color-azulClaro: #1e90ff;
   --color-rojoPrimario: #ff5e57;
   --color-verdePrimario: #05c46b;
+  /*EFECTOS*/
+  --opacityEffect: opacityEffect;
 }
 #root {
   position: absolute !important;
@@ -178,5 +181,14 @@
     width: 100%;
     height: 100%;
     border-radius: 0;
+  }
+}
+
+@keyframes opacityEffect {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

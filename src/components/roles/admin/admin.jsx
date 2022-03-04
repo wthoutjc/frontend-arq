@@ -3,7 +3,6 @@ import { useState, useEffect, useRef } from 'react'
 
 // Components
 import Navbar from '../../layout/Navbar'
-import Test from '../../Tests/test'
 import LoadingServer from '../../loaders/loadingServer'
 
 //Subcomponents
@@ -11,6 +10,7 @@ import AdminDispositivos from './subcomponents/adminDispositivos'
 import AdminAlertas from './subcomponents/adminAlertas'
 import AdminCuenta from './subcomponents/adminCuenta'
 import AdminOthers from './subcomponents/adminOthers'
+import AdminAddDispositivo from './subcomponents/adminAddDispositivo'
 
 // Socket: Context
 import { ContextSocketProvider } from '../../../context/contextSocketProvider'
@@ -21,11 +21,21 @@ import decode from 'jwt-decode'
 //Icons
 import * as MdIcons from 'react-icons/md'
 
+//Helpers
+import manageDate from '../../../services/helpers/dates'
+
 const Admin = () => {
   const [render, setRender] = useState(false)
   const [renderOption, setRenderOption] = useState({
     name: 'Dispositivos',
-    option: <AdminDispositivos />,
+    option: (
+      <>
+        <div className="flex-container">
+          <AdminDispositivos />
+          <AdminAddDispositivo />
+        </div>
+      </>
+    ),
   })
 
   const [infoUser, setInfoUser] = useState(false)
@@ -35,14 +45,23 @@ const Admin = () => {
     day: 'numeric',
   })
   const todayDate = useRef(
-    new Date(Date.now()).toLocaleString('es-CO', optionsDate.current)
+    manageDate(
+      new Date(Date.now()).toLocaleString('es-CO', optionsDate.current)
+    )
   )
 
   const navOptions = useRef([
     {
       id: 'option1',
       name: 'Dispositivos',
-      render: <AdminDispositivos />,
+      render: (
+        <>
+          <div className="flex-container">
+            <AdminDispositivos />
+            <AdminAddDispositivo />
+          </div>
+        </>
+      ),
       icon: <MdIcons.MdSecurity />,
     },
     {
@@ -80,13 +99,10 @@ const Admin = () => {
   const activeOption = useRef()
 
   const handleUpdateOption = (option) => {
-    console.log(activeOption.current)
-    console.log(option)
     if (activeOption.current !== option) {
       const ACTIVE_STATE = 'option-card active'
       const PASIVE_STATE = 'option-card'
       option.setAttribute('class', ACTIVE_STATE)
-      console.log(activeOption.current.hasAttribute('class'))
       if (activeOption.current.hasAttribute('class')) {
         activeOption.current.setAttribute('class', PASIVE_STATE)
       }
@@ -98,6 +114,11 @@ const Admin = () => {
     setInfoUser(decode(localStorage.getItem('jwt')).sub)
     activeOption.current = document.getElementById('option1')
   }, [])
+
+  /**
+   * Aca se verificaria todos los dispositivos y por
+   * cada dispositivo se crearia un nuevo adminDispositivo
+   */
 
   return (
     <>
@@ -138,7 +159,6 @@ const Admin = () => {
                 <h4>{renderOption.name}</h4>
                 {renderOption.option}
               </div>
-              <Test />
             </div>
           </div>
         </div>
