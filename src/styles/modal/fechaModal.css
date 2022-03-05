@@ -1,7 +1,4 @@
-body {
-  position: relative !important;
-}
-.image-modal {
+.fecha-modal {
   position: fixed;
   z-index: 21000;
   display: flex;
@@ -14,7 +11,7 @@ body {
   animation: var(--opacityEffect) 0.2s linear;
   color: white;
 }
-.img-modal-content {
+.fecha-modal-content {
   display: flex;
   flex-direction: column;
   width: 70%;
@@ -23,7 +20,7 @@ body {
   border-radius: 1em;
   overflow: hidden;
 }
-.img-modal-title {
+.fecha-modal-title {
   display: flex;
   border-bottom: 1px solid white;
   background-color: var(--color-grisPrimario);
@@ -33,14 +30,14 @@ body {
   box-sizing: border-box;
   padding: 1em;
 }
-.img-modal-title h1 {
+.fecha-modal-title h1 {
   display: flex;
   justify-content: center;
   font-size: 200%;
   text-align: center;
   width: 100%;
 }
-.img-modal-title button {
+.fecha-modal-title button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -52,54 +49,44 @@ body {
   cursor: pointer;
   color: var(--color-grisPrimario);
 }
-.img-modal-title button:hover {
+.fecha-modal-title button:hover {
   color: var(--color-grisSecundario);
   transition: all 0.3s;
 }
-.img-modal-body {
+.fecha-modal-body {
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100%;
   overflow: auto;
-  animation: heightEffect 0.5s linear;
 }
-.img-modal-body::-webkit-scrollbar {
+.fecha-modal-body::-webkit-scrollbar {
   width: 10px;
   height: 10px;
   background-color: rgba(26, 53, 80, 0.897);
 }
-.img-modal-body::-webkit-scrollbar-thumb {
+.fecha-modal-body::-webkit-scrollbar-thumb {
   background-color: rgb(73, 109, 145);
   border-radius: 20px;
 }
-.image-container {
+.fecha-container {
   width: 100%;
   height: 100%;
 }
-.image-container img {
+.fecha-container fecha {
   width: 100%;
   height: 100%;
   object-fit: fill;
 }
 @media all and (max-width: 649px) {
-  .img-modal-content {
+  .fecha-modal-content {
     width: 100%;
     height: 100%;
     padding: 0;
     border-radius: 0;
   }
-  .img-modal-title {
+  .fecha-modal-title {
     font-size: 60%;
     border-radius: 0;
   }
-}
-
-@keyframes heightEffect {
-    0% {
-        height: 0;
-    }
-    100% {
-        height: 100%;
-    }
 }

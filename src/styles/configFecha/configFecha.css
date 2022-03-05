@@ -1,0 +1,41 @@
+.config-fecha {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  padding: 1em;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: center;
+}
+.config-fecha-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.config-fecha-container > * {
+  margin-bottom: 1em;
+}
+
+.config-fecha-container input {
+  background-color: var(--color-whitePrimario);
+  color: var(--color-grisPrimario);
+  font-weight: 600;
+  padding: 0.5em;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 0.4em;
+}
+
+.config-fecha-container button {
+  background-color: var(--color-verdePrimario);
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  width: 50%;
+  border: none;
+  padding: 0.4em;
+  cursor: pointer;
+}
+
+.note {
+  color: rgb(170, 170, 170);
+}
